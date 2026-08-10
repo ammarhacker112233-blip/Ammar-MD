@@ -1489,9 +1489,9 @@ io.on('connection', (socket) => {
 
 // Start server
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, '0.0.0.0', async () => {
+server.listen(PORT, '0.0.0.0', () => {
     console.log(`\u{1F311} AMMAR MINI BOT v${settings.version} Server running on port ${PORT}`);
     console.log(`\u{1F4E1} Total commands loaded: 120+`);
     console.log(`\u{1F310} Web Dashboard: http://localhost:${PORT}`);
-    await loadExistingSessions();
+    loadExistingSessions().catch(err => console.error('Error in loadExistingSessions:', err));
 });
